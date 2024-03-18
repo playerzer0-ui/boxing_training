@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>defense boxing</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/training.css">
+    </head>
+    <body>
+        <main>
+            <!--pause-->
+            <div id="pause" class="pause hide">
+                <button onclick="togglePauseMenu();pauseTimer();">pause</button>
+            </div>
+            <!-- #timer -->
+            <div id="timer" class="timer">
+                <h1>8:00</h1>
+            </div>
+            <div id="finish" class="finish hide">
+                <h1>FINISH</h1>
+            </div>            
+            <!--menu-->
+            <div class="center-div">
+                <div id="pause-menu" class="pause-menu hide">
+                    <h4>PAUSE</h4>
+                    <button onclick="restart();resetTimer();">restart</button>
+                    <button onclick="resumeTimer();togglePauseMenu()">resume</button>
+                    <button><a href="index.html">home</a></button>
+                </div>
+                <div id="menu" class="menu show">
+                    <label for="">difficulty</label>
+                    <label for="">duration</label> <br>
+                    <select id="difficulty">
+                        <option value="easy">easy</option>
+                        <option value="medium">medium</option>
+                        <option value="hard">hard</option>
+                    </select>
+                    <select id="duration">
+                        <option value=3>3 mins</option>
+                        <option value=5>5 mins</option>
+                        <option value=8>8 mins</option>
+                    </select> <br> <br>
+                    <button onclick="startGame()">START</button>
+                    <button><a href="index.html">return</a></button>
+                </div>
+            </div>
+            <!--game-->
+            <div id="game" class="game hide">
+                <img src="img/body.png" alt="">
+                <div class="circle left-head"></div>
+                <div class="circle right-head"></div>
+                <div class="circle head"></div>
+
+                <div class="circle left-body"></div>
+                <div class="circle body"></div>
+                <div class="circle right-body"></div>
+            </div>
+        </main>
+        
+        <script src="js/index.js" async defer></script>
+    </body>
+    
+    
+</html>

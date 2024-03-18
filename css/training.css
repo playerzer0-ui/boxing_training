@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: aqua;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.show {
+    visibility: visible;
+}
+
+.pause {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.pause-menu {
+    position: relative;
+    padding: 20px;
+    z-index: 3;
+    background-color: white;
+}
+
+.timer {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.finish {
+    position: absolute;
+    font-size: 3em;
+    font-weight: bolder;
+    z-index: 2;
+    background-color: green;
+    color: white;
+}
+
+.menu {
+    position: relative;
+    top: -40px;
+    padding: 20px;
+    background-color: white;
+    z-index: 2;
+}
+
+.center-div {
+    padding: 20px;
+    z-index: 2;
+}
+
+.game {
+    padding: 20px;
+    z-index: 1;
+    position: absolute;
+}
+
+.game img {
+    border-radius: 20px;
+    width: 250px;
+}
+
+.circle {
+    width: 20px;
+    padding: 12px;
+    border-radius: 50%;
+    background-color: red;
+    opacity: 0.6;
+    z-index: 3;
+}
+
+.left-head {
+    position: absolute;
+    top: 14%;
+    left: 37%;
+}
+
+.head {
+    position: absolute;
+    top: 14%;
+    right: 47%;
+}
+
+.right-head {
+    position: absolute;
+    top: 14%;
+    right: 39%;
+}
+
+.left-body {
+    position: absolute;
+    top: 38%;
+    left: 37%;
+}
+
+.body {
+    position: absolute;
+    top: 38%;
+    right: 47%;
+}
+
+.right-body {
+    position: absolute;
+    top: 38%;
+    right: 39%;
+}

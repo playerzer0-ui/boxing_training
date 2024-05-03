@@ -4,7 +4,9 @@ var timeLeft = null;
 var initialTime;
 var circleTimeout;
 var timerInterval;
+var showRandomObjectInterval;
 var spike;
+var mode;
 
 var pauseEl = document.querySelector("#pause");
 var pauseMenuEl = document.querySelector("#pause-menu");
@@ -15,9 +17,10 @@ var timerElement = document.getElementById("timer");
 var timerDisplay = timerElement.querySelector("h1");
 
 
-function startGame(){
+function startGame(m){
     let difficultyEl = document.querySelector("#difficulty");
     let durationEl = document.querySelector("#duration");
+    mode = m;
 
     difficulty = difficultyEl.value;
     duration = durationEl.value;
@@ -40,16 +43,26 @@ function startGame(){
         spike = 500;
     }
 
-    showRandomCircleInterval = setInterval(showRandomCircle, spike);
+    if(mode == "shadow"){
+        showRandomObjectInterval = setInterval(showRandomCircle, spike);
+    }
+    else{
+        showRandomObjectInterval = setInterval(showRandomCell, spike);
+    }
 }
 
 function pauseGame() {
-    clearInterval(showRandomCircleInterval); // Pause showing random circles
+    clearInterval(showRandomObjectInterval); // Pause showing random circles
     clearTimeout(circleTimeout); // Clear the circle timeout to pause circle movement
 }
 
 function resumeGame() {
-    showRandomCircleInterval = setInterval(showRandomCircle, spike); // Resume showing random circles
+    if(mode == "shadow"){
+        showRandomObjectInterval = setInterval(showRandomCircle, spike);
+    }
+    else{
+        showRandomObjectInterval = setInterval(showRandomCell, spike);
+    }
 }
 
 function updateTimerDisplay() {
@@ -97,7 +110,7 @@ function resumeTimer() {
 
 function stopGame() {
     clearInterval(timerInterval); // Stop the timer
-    clearInterval(showRandomCircleInterval); // Stop showing random circles
+    clearInterval(showRandomObjectInterval);
 
     // Hide the game and show the finish message
     toggleFinish();
@@ -155,24 +168,40 @@ function toggleGame(){
 }
 
 function showRandomCircle() {
-    // Get all circles
     let circles = document.querySelectorAll(".circle");
     let timeout;
 
-    // Hide all circles
     circles.forEach(function(circle) {
         circle.style.display = "none";
     });
 
-    // Get a random circle
     let randomIndex = Math.floor(Math.random() * circles.length);
     let randomCircle = circles[randomIndex];
 
-    // Show the random circle
     randomCircle.style.display = "block";
 
     timeout = Math.random() * 2000 + 1500;
     circleTimeout = setTimeout(function() {
         randomCircle.style.display = "none";
+    }, timeout);
+}
+
+function showRandomCell() {
+    let cells = document.querySelectorAll(".grid td");
+    let timeout;
+
+    cells.forEach(function(cell) {
+        cell.classList.remove("highlight");
+    });
+
+    let randomIndex = Math.floor(Math.random() * cells.length);
+    let randomCell = cells[randomIndex];
+
+    randomCell.classList.add("highlight");
+
+    timeout = Math.random() * 2000 + 1500;
+
+    circleTimeout = setTimeout(function() {
+        randomCell.classList.remove("highlight");
     }, timeout);
 }
